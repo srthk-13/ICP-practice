@@ -10,6 +10,7 @@ A collection of LeetCode questions to ace the coding interview!
 | [0015-3sum](https://github.com/srthk-13/ICP-practice/tree/master/0015-3sum) |
 | [0041-first-missing-positive](https://github.com/srthk-13/ICP-practice/tree/master/0041-first-missing-positive) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/srthk-13/ICP-practice/tree/master/0121-best-time-to-buy-and-sell-stock) |
+| [0204-count-primes](https://github.com/srthk-13/ICP-practice/tree/master/0204-count-primes) |
 ## Hash Table
 |  |
 | ------- |
@@ -36,4 +37,16 @@ A collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0015-3sum](https://github.com/srthk-13/ICP-practice/tree/master/0015-3sum) |
+## Math
+|  |
+| ------- |
+| [0204-count-primes](https://github.com/srthk-13/ICP-practice/tree/master/0204-count-primes) |
+## Enumeration
+|  |
+| ------- |
+| [0204-count-primes](https://github.com/srthk-13/ICP-practice/tree/master/0204-count-primes) |
+## Number Theory
+|  |
+| ------- |
+| [0204-count-primes](https://github.com/srthk-13/ICP-practice/tree/master/0204-count-primes) |
 <!---LeetCode Topics End-->
