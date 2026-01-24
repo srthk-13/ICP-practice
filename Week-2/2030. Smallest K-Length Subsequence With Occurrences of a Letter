@@ -1,0 +1,35 @@
+class Solution {
+    public String smallestSubsequence(String s, int k, char letter, int repetition) {
+        int n = s.length();
+        int remainingLetter = 0;
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == letter) remainingLetter++;
+        }
+        int usedLetter = 0;
+        Stack<Character> st = new Stack<>();
+        for (int i = 0; i < n; i++) {
+            char ch = s.charAt(i);
+            while (!st.isEmpty()) {
+                char top = st.peek();
+                if (top > ch && st.size() - 1 + (n - i) >= k && (top != letter || usedLetter - 1 + remainingLetter >= repetition)) {
+                    if (top == letter) usedLetter--;
+                    st.pop();
+                } else {
+                    break;
+                }
+            }
+            if (st.size() < k) {
+                if (ch == letter) {
+                    st.push(ch);
+                    usedLetter++;
+                } else if (k - st.size() > repetition - usedLetter) {
+                    st.push(ch);
+                }
+            }
+            if (ch == letter) remainingLetter--;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : st) sb.append(c);
+        return sb.toString();
+    }
+}
