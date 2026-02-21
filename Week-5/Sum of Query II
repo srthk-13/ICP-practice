@@ -1,0 +1,47 @@
+class Solution {
+    
+    int segmentTree[];
+    int arr[];
+    List<Integer> querySum(int n, int nums[], int q, int queries[]) {
+        // code here
+        this.arr=nums;
+        segmentTree=new int[nums.length*4];
+        build(0, 0, nums.length-1);
+        
+        List<Integer> ans=new ArrayList<>();
+        
+        for(int i=0;i<queries.length-1;i+=2){
+            int left=queries[i]-1;
+            int right=queries[i+1]-1;
+            
+            int sum= querySum(0, 0, arr.length-1, left, right);
+            ans.add(sum);
+        }
+        
+        return ans;
+    }
+    
+    void build(int i, int st, int end){
+        if(st==end){
+            segmentTree[i]=arr[st];
+            return;
+        }
+        
+        int mid=(st+end)/2;
+        
+        build(2*i+1, st, mid);
+        build(2*i+2, mid+1, end);
+        
+        segmentTree[i]=segmentTree[2*i+1] + segmentTree[2*i+2];
+    }
+    
+    int querySum(int i, int st, int end, int left, int right){
+        if(st>right || end<left) return 0;
+        
+        if(st>=left && end<=right) return segmentTree[i];
+        
+        int mid=(st+end)/2;
+        
+        return querySum(2*i+1, st, mid, left, right) + querySum(2*i+2, mid+1, end, left, right);
+    }
+}
