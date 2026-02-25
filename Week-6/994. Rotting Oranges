@@ -1,0 +1,48 @@
+class Solution {
+    class Pair{
+        int x;
+        int y;
+        public Pair(int x, int y){
+            this.x=x;
+            this.y=y;
+        }
+    }
+    public boolean isValid(int i, int j, int grid[][]){
+        if(i<=-1 || i==grid.length || j<=-1 || j==grid[0].length) return false;
+        return true;
+    }
+    public int orangesRotting(int[][] grid) {
+        int fresh=0;
+        int time=0;
+        Queue<Pair> q=new LinkedList<>();
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j]==1) fresh++;
+                if(grid[i][j]==2) q.add(new Pair(i,j)); 
+            }
+        }
+        if(fresh==0) return 0;
+        int dr[]={0,0,-1,1};
+        int dc[]={-1,1,0,0};
+        while(!q.isEmpty()){
+            int size=q.size();
+            for(int i=0;i<size;i++){
+                Pair curr=q.poll();
+                int x=curr.x;
+                int y=curr.y;
+                for(int j=0;j<4;j++){
+                    int nx=x+dr[j];
+                    int ny=y+dc[j];
+                    if(isValid(nx,ny,grid) && grid[nx][ny]==1){
+                        grid[nx][ny]=2;
+                        q.add(new Pair(nx,ny));
+                        fresh--;
+                    }
+                }
+            }
+            time++;
+        }
+        if(fresh==0) return time-1;
+        return -1;
+    }
+}
